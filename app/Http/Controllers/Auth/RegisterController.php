@@ -53,6 +53,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'mobile' => 'required|min:10|max:13',
+            'activation_key' => 'required',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -73,7 +74,8 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
-/*Overide defaul register method from RegisterUsers trait*
+/*Overide defaul register method from RegisterUsers trait
+    *
     * @param array $request
     * @return redirect to $redirectTo
 */
